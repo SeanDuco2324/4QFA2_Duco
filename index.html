@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplication Table</title>
+</head>
+<body>
+    <h1>Multiplication Table</h1>
+    <form onsubmit="return multiplyNumbers()">
+    
+        <p>Please enter two numbers between 2 and 10</p>
+        <input type="number" id="num1">
+        <span>by</span>
+        <input type="number" id="num2">
+        <br><br>
+        <input type="submit" value="Please click here when finished">
+        <br><br>
+        <table id="display"></table>
+    </form>
+
+    <script>
+        function multiplyNumbers(){
+
+        document.getElementById("display").innerHTML=" ";
+        var num1=document.getElementById("num1").value;
+        var num2=document.getElementById("num2").value;
+
+        if ((num1 > 10 || num1 < 2) || isNaN(num1) == true){
+                alert("Please enter a number between 2 and 10");
+                return 0;
+            }
+
+        else if ((num2 > 10 || num2 < 2) || isNaN(num2) == true){
+                alert("Please enter a number between 2 and 10");
+                return 0;
+            }
+
+            let table = [];
+
+        for (a=1; a<=num1; a++) {
+            let row = [];
+
+        for (let b = 1; b <= num2; b++) {
+        row.push(a*b);
+        }
+
+        table.push(row);
+        }
+
+        var output = document.getElementById("display");
+
+        for (const row of table) {
+        output.innerHTML += row.join('\t') + '<br>';
+        }
+
+var finaloutput = output.innerHTML;
+console.log(finaloutput);
+
+return false;
+
+        }
+    </script>
+
+</body>
+</html>
